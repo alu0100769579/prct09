@@ -5,7 +5,7 @@ describe Libro do
 	before :each do
 		@libro1 = Book.new(["Dave Thomas","Andy Hunt","Chad Fowler"], "The pragmatic programmers guide", "the facets of ruby", "Pragmatic Bookshelf", "4 edition", "2013,7,7", ["isbn-13: 978-1937785499","isbn-10: 19937785491"])
 		@libro2 = Book.new(["Scott Chacon"], "Pro Git 2009th Edition", "Pro", "Apress", "2009 edition", "2009,8,27", ["ISBN-13: 978-1430218333", "ISBN-10: 1430218339"])
-        @libro3 = Book.new(["David Flanagan", "Yukihiro Matsumoto"], "The Ruby Programming Language", "Serie", "O’Reilly Media", " 1 edition", "2008,2,4", ["ISBN-10: 0596516177", "ISBN-13: 978-0596516178"])
+        @libro3 = Book.new(["David Flanagan", "Yukihiro Matsumoto"], "The Ruby Programming Language", "Serie", "OReilly Media", " 1 edition", "2008,2,4", ["ISBN-10: 0596516177", "ISBN-13: 978-0596516178"])
         @libro4 = Book.new(["David Chelimsky", "Dave Astels", " Bryan Helmkamp", "Dan North", "Zach Dennis", "Aslak Hellesoy"], "The RSpec Book: Behaviour Driven Development with RSpec, Cucumber, and Friends", "The Facets of Ruby", "Pragmatic Bookshelf", "1 edition", "2010,12,25", ["ISBN-10: 1934356379", "ISBN-13: 978-1934356371",])
         @libro5 = Book.new(["Richard E. Silverman"], "Git Pocket Guide", "Serie", "O’Reilly Media", "1 edition",  "2013,8,2", ["ISBN-10: 1449325866", "ISBN-13: 978-1449325862"])    
         
