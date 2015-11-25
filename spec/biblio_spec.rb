@@ -217,8 +217,25 @@ describe Libro do
 				expect(@libro4 == @libro5).to be false	
 			end
 		end
+	end
 	
 	
+	context "Enumerable" do
+		
+		describe "Comprobancion clase Lista_doble enumerable" do
+			
+			it "Minimo de la lista" do
+				@lista_doble.insertar_elemento(@libro1)
+				@lista_doble.insertar_elemento(@libro2)
+				@lista_doble.insertar_elemento(@libro3)
+				@lista_doble.insertar_elemento(@libro4)
+				@lista_doble.insertar_elemento(@libro5)
+				@lista_doble.insertar_elemento(@revista)
+				@lista_doble.insertar_elemento(@documento)
+				
+				expect(@lista_doble.min).to eq(@libro3)
+			end
+		end
 	end
 
 

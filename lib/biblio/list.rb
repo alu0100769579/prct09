@@ -34,6 +34,8 @@ end
 
 class Lista_doble
    
+   include Enumerable
+   
    attr_accessor :head, :tail
    
    def empty?
@@ -91,6 +93,14 @@ class Lista_doble
        #end
        
        #return node
+   end
+   
+   def each
+       enum = @head
+       while (enum != nil) 
+            yield enum.value
+            enum = enum.next
+       end
    end
    
     
