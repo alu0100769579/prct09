@@ -212,6 +212,10 @@ describe Libro do
 			it "Comprobando primer elemento es mayor o igual de fecha que el segundo" do
 				expect(@documento >= @libro3).to be true
 			end
+			
+			it "Comprobando primer elemento es distinto de fecha al segundo" do
+				expect(@libro4 == @libro5).to be false	
+			end
 		end
 	
 	
