@@ -2,16 +2,16 @@ require 'spec_helper'
 require 'biblio'
 
 describe Libro do
-	before :all do
-		@libro1 = Book.new(["Dave Thomas","Andy Hunt","Chad Fowler"], "The pragmatic programmers guide", "the facets of ruby", "Pragmatic Bookshelf", "4 edition", "July 7, 2013", ["isbn-13: 978-1937785499","isbn-10: 19937785491"])
-		@libro2 = Book.new(["Scott Chacon"], "Pro Git 2009th Edition", "Pro", "Apress", "2009 edition", "August 27, 2009", ["ISBN-13: 978-1430218333", "ISBN-10: 1430218339"])
-        @libro3 = Book.new(["David Flanagan", "Yukihiro Matsumoto"], "The Ruby Programming Language", "Serie", "O’Reilly Media", " 1 edition", "February 4, 2008", ["ISBN-10: 0596516177", "ISBN-13: 978-0596516178"])
-        @libro4 = Book.new(["David Chelimsky", "Dave Astels", " Bryan Helmkamp", "Dan North", "Zach Dennis", "Aslak Hellesoy"], "The RSpec Book: Behaviour Driven Development with RSpec, Cucumber, and Friends", "The Facets of Ruby", "Pragmatic Bookshelf", "1 edition", "December 25, 2010", ["ISBN-10: 1934356379", "ISBN-13: 978-1934356371",])
-        @libro5 = Book.new(["Richard E. Silverman"], "Git Pocket Guide", "Serie", "O’Reilly Media", "1 edition",  "August 2, 2013", ["ISBN-10: 1449325866", "ISBN-13: 978-1449325862"])    
+	before :each do
+		@libro1 = Book.new(["Dave Thomas","Andy Hunt","Chad Fowler"], "The pragmatic programmers guide", "the facets of ruby", "Pragmatic Bookshelf", "4 edition", "2013,7,7", ["isbn-13: 978-1937785499","isbn-10: 19937785491"])
+		@libro2 = Book.new(["Scott Chacon"], "Pro Git 2009th Edition", "Pro", "Apress", "2009 edition", "2009,8,27", ["ISBN-13: 978-1430218333", "ISBN-10: 1430218339"])
+        @libro3 = Book.new(["David Flanagan", "Yukihiro Matsumoto"], "The Ruby Programming Language", "Serie", "O’Reilly Media", " 1 edition", "2008,2,4", ["ISBN-10: 0596516177", "ISBN-13: 978-0596516178"])
+        @libro4 = Book.new(["David Chelimsky", "Dave Astels", " Bryan Helmkamp", "Dan North", "Zach Dennis", "Aslak Hellesoy"], "The RSpec Book: Behaviour Driven Development with RSpec, Cucumber, and Friends", "The Facets of Ruby", "Pragmatic Bookshelf", "1 edition", "2010,12,25", ["ISBN-10: 1934356379", "ISBN-13: 978-1934356371",])
+        @libro5 = Book.new(["Richard E. Silverman"], "Git Pocket Guide", "Serie", "O’Reilly Media", "1 edition",  "2013,8,2", ["ISBN-10: 1449325866", "ISBN-13: 978-1449325862"])    
         
-        @revista = Magazine.new(["Raul Martin"], "LPP", "Tercero", "ULL", "2015 edition", "Noviembre 19, 2015", "123456789")
+        @revista = Magazine.new(["Raul Martin"], "LPP", "Tercero", "ULL", "2015 edition", "2015,11,19", "123456789")
 		        
-        @documento = Elec_Document.new(["Gaspar Machin"], "El trotamundos", "Buscadores", "LA", "2014 edition", "Junio 18, 2014", "www.documentos-electronicos.com")
+        @documento = Elec_Document.new(["Gaspar Machin"], "El trotamundos", "Buscadores", "LA", "2014 edition", "2014,6,18", "www.documentos-electronicos.com")
         
         @node1 = Node.new(@libro1)
         @node2 = Node.new(@libro2)
@@ -91,7 +91,7 @@ describe Libro do
 		end
 		
 		describe "Comprobar lista doblemente enlazada" do
-			it "La lista está vacía" do
+			it "La lista esta vacia" do
 				expect(@lista_doble.empty?).to eq(true)
 			end
 		end
@@ -161,7 +161,7 @@ describe Libro do
 	end
 	
 	
-	context "Jerarquía" do
+	context "Jerarquia" do
 	
 		describe "Comprobar la herencia" do
 			it "Magazine es una clase herencia de Libro" do
@@ -192,55 +192,79 @@ describe Libro do
 			end
 		end
 	end
+	
+	context "Comparable" do
+		
+		describe "Comprobando clase Libro comparable" do
+			
+			it "Comprobando primer elemento es menor de fecha que el segundo" do
+				expect(@libro2 < @libro1).to be true
+			end
+		
+			it "Comprobando primer elemento es mayor de fecha que el segundo" do
+				expect(@revista > @libro1).to be true
+			end
+			
+			it "Comprobando primer elemento es menor o igual de fecha que el segundo" do
+				expect(@documento <= @revista).to be true
+			end
+			
+			it "Comprobando primer elemento es mayor o igual de fecha que el segundo" do
+				expect(@documento >= @libro3).to be true
+			end
+		end
+	
+	
+	end
 
 
 
 	context "Libro" do
 		
-		describe "Debe existir uno o más autores" do
-			it "Se almacenan correctamente los autores y hay un método para obtenerlos" do
+		describe "Debe existir uno o mas autores" do
+			it "Se almacenan correctamente los autores y hay un metodo para obtenerlos" do
 				expect(@libro1.autor).to eq(["Dave Thomas","Andy Hunt","Chad Fowler"])
 				
 			end
 		end
 		
-		describe "Debe existir un título y hay un método para obtenerlo" do
+		describe "Debe existir un titulo y hay un metodo para obtenerlo" do
 			it "Se almacena correctamente el titulo" do
 				expect(@libro1.titulo).to eq("The pragmatic programmers guide")
 				
 			end
 		end
 	
-		describe "Debe existir o no una serie y hay un método para obtenerla" do
+		describe "Debe existir o no una serie y hay un metodo para obtenerla" do
 			it "En el libro 1 no debe haber serie" do
 				expect(@libro1.serie).to eq("the facets of ruby")
 			end
 		
 		end
 	
-		describe "Debe existir una editorial y hay un método para obtenerla" do
+		describe "Debe existir una editorial y hay un metodo para obtenerla" do
 			it "Se almacena correctamente la editorial" do
 				expect(@libro1.editorial).to eq("Pragmatic Bookshelf")
 				
 			end
 		end
 	
-		describe "Debe existir un numero de edicion y hay un método para obtenerlo" do
+		describe "Debe existir un numero de edicion y hay un metodo para obtenerlo" do
 			it "Se almacenan correctamente las ediciones" do
 				expect(@libro1.edicion).to eq("4 edition")
 				
 			end
 		end 
 	
-		describe "Debe existir una fecha de publicacion y hay un método para obtenerla" do
+		describe "Debe existir una fecha de publicacion y hay un metodo para obtenerla" do
 			it "Se almacenan correctamente las fechas" do
-				expect(@libro1.publicacion).to eq("July 7, 2013")
+				expect(@libro1.publicacion).to eq("2013,7,7")
 			
 			end
 		end
 	
-		describe "Debe existir uno o mas numeros ISBN y hay un método para obtenerlos" do
-			it "En el libro 1 están el ISB-10 y el 13" do
+		describe "Debe existir uno o mas numeros ISBN y hay un metodo para obtenerlos" do
+			it "En el libro 1 estan el ISB-10 y el 13" do
 				expect(@libro1.isbn).to eq(["isbn-13: 978-1937785499","isbn-10: 19937785491"])
 			end
 		end

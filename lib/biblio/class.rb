@@ -1,5 +1,6 @@
 class Libro
 	
+		include Comparable
 		
 		attr_accessor :autor, :titulo, :serie, :editorial, :edicion, :publicacion
 		def initialize(autor, titulo, serie, editorial, edicion, publicacion)
@@ -12,6 +13,11 @@ class Libro
 		end
 		def to_s
 		    "#{@autor}\n#{@titulo}\n#{@serie}\n#{@editorial}; #{@edicion} (#{@publicacion})\n"
+		end
+		
+		def <=> (other)
+			
+			@publicacion <=> other.publicacion	
 		end
 end
 
