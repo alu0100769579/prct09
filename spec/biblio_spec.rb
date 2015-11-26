@@ -235,6 +235,30 @@ describe Libro do
 				
 				expect(@lista_doble.min).to eq(@libro3)
 			end
+			
+			it "Maximo de la lista" do
+				@lista_doble.insertar_elemento(@libro1)
+				@lista_doble.insertar_elemento(@libro2)
+				@lista_doble.insertar_elemento(@libro3)
+				@lista_doble.insertar_elemento(@libro4)
+				@lista_doble.insertar_elemento(@libro5)
+				@lista_doble.insertar_elemento(@revista)
+				@lista_doble.insertar_elemento(@documento)
+				
+				expect(@lista_doble.max).to eq(@revista)
+			end
+			
+			it "Orden de la lista" do
+				@lista_doble.insertar_elemento(@libro1)
+				@lista_doble.insertar_elemento(@libro2)
+				@lista_doble.insertar_elemento(@libro3)
+				@lista_doble.insertar_elemento(@libro4)
+				@lista_doble.insertar_elemento(@libro5)
+				@lista_doble.insertar_elemento(@revista)
+				@lista_doble.insertar_elemento(@documento)
+				
+				expect(@lista_doble.sort).to eq([@libro3, @libro2, @libro4, @libro1, @libro5, @documento, @revista])
+			end
 		end
 	end
 
